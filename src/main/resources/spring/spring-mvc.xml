@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+    <!-- 配置使Spring采用CGLIB代理 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+
+    <!-- 5. 使用声明式事务 -->
+    <!-- 配置 Annotation 驱动，扫描@Transactional注解的类定义事务  -->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager" proxy-target-class="true"/>
+
+    <!--静态资源映射-->
+    <mvc:resources mapping="/application/**" location="/WEB-INF/resources/js/application/"/>
+    <mvc:resources mapping="/jquery/**" location="/WEB-INF/resources/js/jquery/"/>
+    <mvc:resources mapping="/commons/**" location="/WEB-INF/resources/js/commons/"/>
+</beans>
