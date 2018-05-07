@@ -37,4 +37,11 @@ public class BaseClassController extends BaseController{
         List<BaseClass> results = baseClassService.queryBaseClassesByParentId(parentId);
         return InterviewResult.success();
     }
+
+    @RequestMapping(value = "insertClass",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @BaseResultAnnotation
+    public InterviewResult insertClass(String parentId){
+
+        return null;
+    }
 }
