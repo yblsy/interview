@@ -27,4 +27,9 @@
     <mvc:resources mapping="/commons/**" location="/WEB-INF/resources/js/commons/"/>
     <mvc:resources mapping="/css/bootstarp/**" location="/WEB-INF/resources/css/bootstarp"/>
     <mvc:resources mapping="/bootstarp/**" location="/WEB-INF/resources/js/bootstarp"/>
+    <mvc:resources mapping="/vendor/**" location="/WEB-INF/resources/js/vendor/"/>
+
+    <mvc:resources mapping="/fonts/**" location="/WEB-INF/resources/fonts/"/>
+
+    <mvc:resources mapping="/css/**" location="/WEB-INF/resources/css/"/>
 </beans>

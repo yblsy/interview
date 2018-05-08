@@ -6,6 +6,7 @@ import interview.common.model.InterviewResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import personal.annotation.BaseResultAnnotation;
@@ -25,6 +26,11 @@ public class BaseClassController extends BaseController{
 
     @Autowired
     private BaseClassService baseClassService;
+
+    @RequestMapping("{path}")
+    public String to(@PathVariable("path") String path){
+        return path;
+    }
 
     @RequestMapping(value = "tomanage",method = RequestMethod.GET)
     public String toManage(){
