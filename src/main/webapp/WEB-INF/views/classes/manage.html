@@ -5,32 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>manage</title>
-
+    <!-- Bootstrap -->
     <link href="/css/bootstarp/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstarp/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/bootstarp/animate.css" rel="stylesheet">
-    <link href="/css/bootstarp/style.css" rel="stylesheet">
-    <link href="/css/bootstarp/bootstrap-treeview.css" rel="stylesheet">
-    <!-- 全局js -->
-    <script src="/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/jquery/jquery-3.3.1.js"></script>
     <script src="/bootstarp/bootstrap.min.js"></script>
-    <script src="/bootstarp/bootstrap-treeview.js"></script>
 </head>
 <body>
-
-   <div class="class-tree">
-
-   </div>
-
    <div>
-       <div class="select-info">
-           <label>当前选中的节点：</label>
-           <span></span>
-           <input type="hidden" value=""/>
-       </div>
        <!--最高等级下-->
        <div class="div-level-0">
-           <label>一级节点:</label>
+           <label>选择父节点:</label>
            <select class="level-0">
                 <option value="">无</option>
            </select>
@@ -44,22 +28,16 @@
 </body>
 <script type="text/javascript">
     $(function(){
-
-        $('.class-tree').treeview({data:function(){
-            $.post("/class/queryClass",{parentid:""},function (data) {
-                console.log(data);
-            },"json");
-        }});
-
+        //查询顶级节点
+        $.post("/class/queryClass",{parentid:""},function (data) {
+            console.log(data);
+        },"json");
     });
 
     function insertNode(){
         $.ajax({
             url:"/class/insertClass",
             data:{
-                parentId:$('.select-info input:hidden').val()
-            },
-            success:function(data){
 
             }
         })

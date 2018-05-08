@@ -36,8 +36,6 @@ public class BaseClassServiceImpl implements BaseClassService {
 
     @Override
     public List<BaseClass> queryBaseClassesByParentId(String parentId) {
-        List<BaseClass> topClass = innerBaseClassComponent.selectBaseClassesByParentId(Strings.emptyToNull(parentId));
-
-        return topClass;
+        return innerBaseClassComponent.selectBaseClassesByParentId(Strings.emptyToNull(parentId));
     }
 }

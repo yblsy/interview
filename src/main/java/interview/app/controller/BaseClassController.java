@@ -6,7 +6,6 @@ import interview.common.model.InterviewResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import personal.annotation.BaseResultAnnotation;
@@ -30,11 +29,6 @@ public class BaseClassController extends BaseController{
     @RequestMapping(value = "tomanage",method = RequestMethod.GET)
     public String toManage(){
         return "classes/manage";
-    }
-
-    @RequestMapping(value = "to/{index}")
-    public String toIndex(@PathVariable("index") String index){
-        return index;
     }
 
     @RequestMapping(value = "queryClass",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
