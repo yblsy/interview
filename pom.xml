@@ -195,17 +195,17 @@
         </dependency>
 
         <!--Mybatis+Spring整合-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>${mybatis-spring.version}</version>
-        </dependency>
+        </dependency>-->
         <!--mybatis依赖包-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
@@ -288,11 +288,14 @@
             </plugins>
         </pluginManagement>
 
-        <resources>
+        <!--<resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
                 <filtering>true</filtering>
             </resource>
-        </resources>
+        </resources>-->
     </build>
 </project>

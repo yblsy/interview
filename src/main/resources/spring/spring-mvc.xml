@@ -22,7 +22,7 @@
     <tx:annotation-driven transaction-manager="dataSourceTransactionManager" proxy-target-class="true"/>
 
     <!--静态资源映射-->
-    <mvc:resources mapping="/application/**" location="/WEB-INF/resources/js/application/"/>
+    <!--<mvc:resources mapping="/application/**" location="/WEB-INF/resources/js/application/"/>-->
     <mvc:resources mapping="/jquery/**" location="/WEB-INF/resources/js/jquery/"/>
     <mvc:resources mapping="/commons/**" location="/WEB-INF/resources/js/commons/"/>
     <mvc:resources mapping="/css/bootstarp/**" location="/WEB-INF/resources/css/bootstarp"/>
