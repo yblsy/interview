@@ -32,7 +32,7 @@ public class InnerBaseClassComponent {
     }
 
     public Integer updateBaseClass(BaseClass baseClass){
-        baseClass.setUpdateTime(new Timestamp(new Date().getTime()));
+        baseClass.setUpdateTime(new Date());
         return baseClassMapper.updateAllColumnById(baseClass);
     }
 

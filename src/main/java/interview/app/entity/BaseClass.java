@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,11 +45,11 @@ public class BaseClass extends Model<BaseClass> {
 
     protected String createUser;
 
-    protected Timestamp createTime;
+    protected Date createTime;
 
     protected String updateUser;
 
-    protected Timestamp updateTime;
+    protected Date updateTime;
 
     @TableField("is_delete")
     protected Integer isDelete = 0;
