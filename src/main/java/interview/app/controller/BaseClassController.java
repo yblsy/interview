@@ -41,13 +41,13 @@ public class BaseClassController extends BaseController{
     @BaseResultAnnotation
     public InterviewResult queryClass(String parentId){
         List<BaseClass> results = baseClassService.queryBaseClassesByParentId(parentId);
-        return InterviewResult.success();
+        return InterviewResult.success(results,"查询成功");
     }
 
     @RequestMapping(value = "insertClass",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     @BaseResultAnnotation
-    public InterviewResult insertClass(String parentId){
-
+    public InterviewResult insertClass(BaseClass baseClass){
+        Integer result = baseClassService.insertBaseClass(baseClass);
         return null;
     }
 }

@@ -22,7 +22,13 @@
     </div>
     <div>
         <label>节点名称：</label>
-        <input type="text" id="node" value=""/>
+        <input type="text" id="node" value=""/><br/>
+        <label>父节点id：</label>
+        <input type="text" id="parent_node" value=""/><br/>
+        <label>url：</label>
+        <input type="text" id="url" value=""/><br/>
+        <label>memo：</label>
+        <input type="text" id="memo" value=""/><br/>
         <input type="button" value="增加" onclick="insertNode()"/>
     </div>
 </body>
@@ -37,7 +43,15 @@
     function insertNode(){
         $.ajax({
             url:"/class/insertClass",
+            type:'post',
             data:{
+                name:$('#node').val(),
+                parentId:$('#parent_node').val(),
+                url:$('#url').val(),
+                memo:$('#memo').val()
+            },
+            dataType:'json',
+            success:function(data){
 
             }
         })

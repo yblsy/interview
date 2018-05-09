@@ -1,5 +1,7 @@
 package interview.app.entity;
 
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,11 +19,15 @@ public class BaseEntity implements Serializable{
 
     private static final long serialVersionUID = -8593976464862192681L;
 
-    private String createUser;
+    protected String createUser;
 
-    private Timestamp createTime;
+    protected Timestamp createTime;
 
-    private String updateUser;
+    protected String updateUser;
 
-    private Timestamp updateTime;
+    protected Timestamp updateTime;
+
+    @TableField("is_delete")
+    protected Integer isDelete = 0;
+
 }

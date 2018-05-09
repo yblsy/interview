@@ -1,5 +1,8 @@
 package interview.app.entity;
 
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +15,8 @@ import java.io.Serializable;
  **/
 @Setter
 @Getter
-public class SeqConf implements Serializable{
+@TableName("seq_conf")
+public class SeqConf extends Model<SeqConf> implements Serializable{
     private static final long serialVersionUID = -4522299517950499804L;
 
     public SeqConf(){
@@ -32,4 +36,9 @@ public class SeqConf implements Serializable{
     private Integer seqStep;
 
     private Integer seqCurrent;
+
+    @Override
+    protected Serializable pkVal() {
+        return this.seqName;
+    }
 }

@@ -6,7 +6,9 @@ import interview.app.entity.SeqConf;
 import interview.app.inner.InnerBaseClassComponent;
 import interview.app.service.BaseClassService;
 import interview.app.service.SeqConfService;
+import interview.common.enums.ErrorEnum;
 import interview.common.enums.SeqConfEnum;
+import interview.common.exceptions.InterviewException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,8 +32,35 @@ public class BaseClassServiceImpl implements BaseClassService {
     @Override
     @Transactional(readOnly = false,rollbackFor = Exception.class)
     public Integer insertBaseClass(BaseClass baseClass) {
+        int result = 0;
+        BaseClass parentClass = null;
+        if(!Strings.isNullOrEmpty(baseClass.getParentId())){
+            parentClass = innerBaseClassComponent.selectOne(baseClass.getParentId());
+            if(parentClass == null){
+                throw new InterviewException(ErrorEnum.INTER_BC_ER_000001.getCode(),ErrorEnum.INTER_BC_ER_000001.getValue());
+            }
+            //该父节点多增加一个子节点
+            parentClass.setChildNum(parentClass.getChildNum() + 1);
+            result = innerBaseClassComponent.updateBaseClass(parentClass);
+            if(result != 1){
+                throw new InterviewException(ErrorEnum.INTER_BC_ER_000002.getCode(),ErrorEnum.INTER_BC_ER_000002.getValue());
+            }
+        }else{
+            parentClass = new BaseClass();
+            parentClass.setLevel("0");
+            parentClass.setParentName(null);
+        }
+
+        //增加节点
         baseClass.setId(seqConfService.getId(SeqConfEnum.T_BASE_CLASS.getCode()));
-        return innerBaseClassComponent.insertBaseClass(baseClass);
+        baseClass.setParentName(parentClass.getParentName());
+        baseClass.setLevel("" + Integer.parseInt(parentClass.getLevel()) + 1);
+
+        result = innerBaseClassComponent.insertBaseClass(baseClass);
+        if(result != 1){
+            throw new InterviewException(ErrorEnum.INTER_BC_ER_000003.getCode(),ErrorEnum.INTER_BC_ER_000003.getValue());
+        }
+        return result;
     }
 
     @Override

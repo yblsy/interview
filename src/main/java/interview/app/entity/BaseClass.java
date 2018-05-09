@@ -1,7 +1,13 @@
 package interview.app.entity;
 
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * @author 刘晨
@@ -10,7 +16,7 @@ import lombok.Setter;
  **/
 @Getter
 @Setter
-public class BaseClass extends BaseEntity {
+public class BaseClass extends Model<BaseClass> {
 
     private static final long serialVersionUID = -1064080574401025929L;
 
@@ -18,9 +24,37 @@ public class BaseClass extends BaseEntity {
 
     private String name;
 
-    private String parent_id;
+    @TableField("parent_id")
+    private String parentId;
 
-    private String parent_name;
+    @TableField("parent_name")
+    private String parentName;
 
     private String level;
+
+    private String url;
+
+    @TableField("child_num")
+    private Integer childNum;
+    
+    private String memo;
+
+    @TableField(exist = false)
+    private List<BaseClass> childrens;
+
+    protected String createUser;
+
+    protected Timestamp createTime;
+
+    protected String updateUser;
+
+    protected Timestamp updateTime;
+
+    @TableField("is_delete")
+    protected Integer isDelete = 0;
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
 }
