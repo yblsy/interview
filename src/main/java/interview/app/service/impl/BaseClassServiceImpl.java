@@ -54,7 +54,7 @@ public class BaseClassServiceImpl implements BaseClassService {
         //增加节点
         baseClass.setId(seqConfService.getId(SeqConfEnum.T_BASE_CLASS.getCode()));
         baseClass.setParentName(parentClass.getParentName());
-        baseClass.setLevel("" + Integer.parseInt(parentClass.getLevel()) + 1);
+        baseClass.setLevel("" + (Integer.parseInt(parentClass.getLevel()) + 1));
 
         result = innerBaseClassComponent.insertBaseClass(baseClass);
         if(result != 1){

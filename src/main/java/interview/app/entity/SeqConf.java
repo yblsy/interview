@@ -2,6 +2,7 @@ package interview.app.entity;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,14 +28,19 @@ public class SeqConf extends Model<SeqConf> implements Serializable{
         this.seqName = seqName;
     }
 
+    @TableId("seq_name")
     private String seqName;
 
+    @TableField("seq_start")
     private Integer seqStart;
 
+    @TableField("seq_end")
     private Integer seqEnd;
 
+    @TableField("seq_step")
     private Integer seqStep;
 
+    @TableField("seq_current")
     private Integer seqCurrent;
 
     @Override

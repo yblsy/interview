@@ -2,6 +2,7 @@ package interview.app.entity;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,7 @@ public class BaseClass extends Model<BaseClass> {
 
     private static final long serialVersionUID = -1064080574401025929L;
 
+    @TableId
     private String id;
 
     private String name;
