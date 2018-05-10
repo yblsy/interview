@@ -1,5 +1,6 @@
 package interview.app.controller;
 
+import com.google.common.base.Strings;
 import interview.app.entity.BaseClass;
 import interview.app.service.BaseClassService;
 import interview.common.model.InterviewResult;
@@ -48,6 +49,6 @@ public class BaseClassController extends BaseController{
     @BaseResultAnnotation
     public InterviewResult insertClass(BaseClass baseClass){
         Integer result = baseClassService.insertBaseClass(baseClass);
-        return null;
+        return InterviewResult.success(result,"新增成功");
     }
 }

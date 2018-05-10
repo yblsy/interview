@@ -49,6 +49,7 @@ public class BaseClassServiceImpl implements BaseClassService {
             parentClass = new BaseClass();
             parentClass.setLevel("0");
             parentClass.setParentName(null);
+            parentClass.setParentId(null);
         }
 
         //增加节点
